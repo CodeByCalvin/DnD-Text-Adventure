@@ -83,7 +83,11 @@ export class Room {
 
   // Return enemy in the room
   returnEnemy() {
-    return this._enemies.map(enemy => enemy.name);
+    if (this._enemies.length > 0) {
+      return this._enemies[0]._name;
+    } else {
+      return 'no enemy';
+    }
   }
 }
 
