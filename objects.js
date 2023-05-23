@@ -26,14 +26,22 @@ const theFoyerOfAscendancy = new Room("The Foyer of Ascendancy", "There is a sta
 theFoyerOfAscendancy.addEnemy(ghost);
 theFoyerOfAscendancy.addItem(sword)
 theFoyerOfAscendancy.addPlayerOptions([
-  { text: 'Take the sword', action: () => player.addItem(sword) },
-  { text: 'Move up the stairs to the Grand Hall', action: () => game.moveToRoom(theGrandHall) },
+  { input: 1, text: 'Take the sword', action: (game) => game._player.addItem(sword) },
+  { input: 2, text: 'Move up the stairs to the Grand Hall', action: (game) => game.moveToRoom('north') },
 ]);
+
 
 ///// The Grand Hall
 const theGrandHall = new Room("The Grand Hall", "You are in The Grand Hall. There is a large table in the center of the room, with a few chairs scattered around it. There is a door to the north, and a door to the east.");
 theGrandHall.addEnemy(mummy);
-theGrandHall.addPlayerOptions('Fight the mummy', 'Move to the Battle Yard to the east', 'Move down the stairs to the Foyer of Ascendancy', 'Move to the Archive of Ages to the west');
+
+
+theFoyerOfAscendancy.addPlayerOptions([
+  { input: 1, text: 'Take the sword', action: (game) => game._player.addItem(sword) },
+  { input: 2, text: 'Move up the stairs to the Grand Hall', action: (game) => game.moveToRoom('north') },
+]);
+
+
 
 ///// The Archive of Ages
 const theArchiveOfAges = new Room("The Archive of Ages", "You are in The Archive of Ages. There are bookshelves lining the walls, and a few tables decorated with dusty tomes.");

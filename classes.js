@@ -1,3 +1,4 @@
+//////////////////////// GAME OBJECT ////////////////////////
 export class Game {
   constructor(player, rooms, startingRoomIndex = 0) {
     this._player = player;
@@ -6,7 +7,7 @@ export class Game {
   }
 
   moveToRoom(direction) {
-    const newRoom = this._currentRoom[`_room${direction}`];
+    const newRoom = this._currentRoom[`_room${direction.charAt(0).toUpperCase() + direction.slice(1)}`];
     if (newRoom) {
       this._currentRoom = newRoom;
       newRoom.enter();
@@ -22,7 +23,7 @@ export class Game {
   }
 }
 
-
+//////////////////////// ROOM OBJECT ////////////////////////
 export class Room {
   constructor(name, description) {
     this._name = name;
@@ -35,7 +36,6 @@ export class Room {
   enter() {
     // display the room's description, items, and enemies
   }
-
 
 
   // Link rooms together
@@ -87,6 +87,7 @@ export class Room {
   }
 }
 
+//////////////////////// CHARACTER OBJECT ////////////////////////
 export class Character {
   constructor(name, health, inventory) {
     this._name = name;
@@ -103,6 +104,7 @@ export class Character {
   }
 }
 
+//////////////////////// ENEMY OBJECT ////////////////////////
 export class Enemy {
   constructor(name, health, damage, dialogue) {
     this._name = name;
@@ -111,6 +113,8 @@ export class Enemy {
     this._dialogue = dialogue;
   }
 }
+
+//////////////////////// ITEM OBJECT ////////////////////////
 
 export class Item {
   constructor(name) {
