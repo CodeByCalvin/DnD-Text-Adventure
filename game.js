@@ -85,3 +85,5 @@ function userInput() {
 userInput();
 
 console.log(game._currentRoom)
+console.log(game._player);
+console.log(game._player._inventory);

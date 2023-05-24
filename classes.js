@@ -52,8 +52,12 @@ export class Room {
   }
 
   // Add enemy to room
-  addEnemy(enemy) {
-    this._enemies.push(enemy)
+  addEnemy(enemyName, enemyDescription, enemyDialogue) {
+    this._enemies.push({
+      name: enemyName,
+      description: enemyDescription,
+      dialogue: enemyDialogue
+    });
   }
 
   // Add player options
@@ -105,6 +109,12 @@ export class Character {
 
   addItem(item) {
     this._inventory.push(item);
+    console.log(this._inventory)
+    return `You picked up ${item.name}.`
+  }
+  fight(enemy) {
+    console.log(`You attacked ${enemy._name} and defeated them.`)
+    return `You attacked ${enemy._name} and deafeted them.`
   }
 }
 
