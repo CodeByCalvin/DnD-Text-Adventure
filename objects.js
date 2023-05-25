@@ -3,7 +3,7 @@ export { theFoyerOfAscendancy, theGrandHall, theArchiveOfAges, theElixirEnclave,
 
 //////////////////////// ENEMIES ////////////////////////
 const ghost = new Enemy('a ghost', 'a ghostly apparition fleeing from your presence', 'You are not worthy of this castle...');
-const mummy = new Enemy('a mummy', 'a mummy shambling around the room', '*Terrifying moan!*');
+const mummy = new Enemy('the mummy', 'a mummy shambling around the room', '*Terrifying moan!*');
 const animatedBook = new Enemy('an animated book', 'an animated book whizzing around the room', '*Pages rustle menacingly!*');
 const undeadScientist = new Enemy('an undead scientist', 'an undead scientist mixing potions, unaware of your presence', 'You disturb my research!');
 const ghoul = new Enemy('a ghoul', 'a ghoul feasting on a corpse in the corner', 'Fresh meat!');
@@ -45,7 +45,7 @@ theGrandHall.addPlayerOptions([
     text: 'Fight the mummy',
     action: (game) => {
       game._player.fight(game, game._currentRoom._enemies[0]);
-      theGrandHall.removePlayerOptions('Fight the mummy');
+      game._currentRoom.removePlayerOptions('Fight the mummy');
     }
   },
   { input: 2, text: 'Move east to the Battle Yard', action: (game) => game.moveToRoom('east') },
@@ -59,7 +59,14 @@ const theArchiveOfAges = new Room("The Archive of Ages", "There are bookshelves 
 theArchiveOfAges.addEnemy(animatedBook);
 theArchiveOfAges.addItem(luckyCoin);
 theArchiveOfAges.addPlayerOptions([
-  { input: 1, text: 'Fight the animated book', action: (game) => game._player.fight(animatedBook) },
+  {
+    input: 1,
+    text: 'Fight the animated book',
+    action: (game) => {
+      game._player.fight(game, game._currentRoom._enemies[0]);
+      game._currentRoom.removePlayerOptions('Fight the animated book');
+    }
+  },
   { input: 2, text: 'Take the lucky coin', action: (game) => game._player.addItem(luckyCoin) },
   { input: 3, text: 'Move north to the Elixir Enclave', action: (game) => game.moveToRoom('north') },
   { input: 4, text: 'Move east to the Grand Hall', action: (game) => game.moveToRoom('east') },
@@ -70,7 +77,14 @@ const theElixirEnclave = new Room("The Elixir Enclave", "There are vials of vari
 theElixirEnclave.addEnemy(undeadScientist);
 theElixirEnclave.addItem(healingPotion);
 theElixirEnclave.addPlayerOptions([
-  { input: 1, text: 'Fight the undead scientist', action: (game) => game._player.fight(undeadScientist) },
+  {
+    iinput: 1,
+    text: 'Fight the undead scientist',
+    action: (game) => {
+      game._player.fight(game, game._currentRoom._enemies[0]);
+      game._currentRoom.removePlayerOptions('Fight the undead scientist');
+    }
+  },
   { input: 2, text: 'Take the healing potion', action: (game) => game._player.addItem(healingPotion) },
   { input: 3, text: 'Move east to the Mage Quarters', action: (game) => game.moveToRoom('east') },
   { input: 4, text: 'Move south to the Archive of Ages', action: (game) => game.moveToRoom('south') },
@@ -79,13 +93,19 @@ theElixirEnclave.addPlayerOptions([
 ///// The Mage Quarters
 const theMageQuarters = new Room("The Mage Quarters", "There are a few beds, and a desk with a few books on it.");
 theMageQuarters.addEnemy(ghoul);
-theMageQuarters.addItem(malazBook);
 theMageQuarters.addPlayerOptions([
-  { input: 1, text: 'Fight the ghoul', action: (game) => game._player.fight(ghoul) },
-  { input: 2, text: 'Take the book titled "The Origin of Malaz Island"', action: (game) => game._player.addItem(malazBook) },
-  { input: 3, text: 'Move north to the Sovereign\'s Seat', action: (game) => game.moveToRoom('north') },
-  { input: 4, text: 'Move east to the Royal Armory', action: (game) => game.moveToRoom('east') },
-  { input: 5, text: 'Move west to the Elixir Enclave', action: (game) => game.moveToRoom('west') },
+  {
+    input: 1,
+    text: 'Fight the ghoul',
+    action: (game) => {
+      game._player.fight(game, game._currentRoom._enemies[0]);
+      game._currentRoom.removePlayerOptions('Fight the ghoul');
+    }
+  },
+
+  { input: 2, text: 'Move north to the Sovereign\'s Seat', action: (game) => game.moveToRoom('north') },
+  { input: 3, text: 'Move east to the Royal Armory', action: (game) => game.moveToRoom('east') },
+  { input: 4, text: 'Move west to the Elixir Enclave', action: (game) => game.moveToRoom('west') },
 ]);
 
 ///// The Battle Yard
@@ -93,7 +113,14 @@ const theBattleYard = new Room("The Battle Yard", "There are a few training dumm
 theBattleYard.addEnemy(skeleton);
 theBattleYard.addItem(bandages);
 theBattleYard.addPlayerOptions([
-  { input: 1, text: 'Fight the skeleton', action: (game) => game._player.fight(skeleton) },
+  {
+    input: 1,
+    text: 'Fight the skeleton',
+    action: (game) => {
+      game._player.fight(game, game._currentRoom._enemies[0]);
+      game._currentRoom.removePlayerOptions('Fight the skeleton');
+    }
+  },
   { input: 2, text: 'Take the freshly packed bandages', action: (game) => game._player.addItem(bandages) },
   { input: 3, text: 'Move north to the Royal Armory', action: (game) => game.moveToRoom('north') },
   { input: 4, text: 'Move west to the Grand Hall ', action: (game) => game.moveToRoom('west') },
@@ -104,7 +131,14 @@ const theRoyalArmory = new Room("The Royal Armory", "You are in The Royal Armory
 theRoyalArmory.addEnemy(animatedArmor);
 theRoyalArmory.addItem(shield);
 theRoyalArmory.addPlayerOptions([
-  { input: 1, text: 'Fight the animated suit of armor', action: (game) => game._player.fight(animatedArmor) },
+  {
+    input: 1,
+    text: 'Fight the animated suit of armor',
+    action: (game) => {
+      game._player.fight(game, game._currentRoom._enemies[0]);
+      game._currentRoom.removePlayerOptions('Fight the animated suit of armor');
+    }
+  },
   { input: 2, text: 'Take the shield', action: (game) => game._player.addItem(shield) },
   { input: 3, text: 'Move south to the Battle Yard', action: (game) => game.moveToRoom('south') },
   { input: 4, text: 'Move west to the Mage Quarters', action: (game) => game.moveToRoom('west') },
@@ -114,7 +148,14 @@ theRoyalArmory.addPlayerOptions([
 const theSovereignsSeat = new Room("The Sovereign's Seat", "You are in The Sovereign's Seat. There is a large throne in the center of the room, with a few chairs scattered around it.");
 theSovereignsSeat.addEnemy(lich);
 theSovereignsSeat.addPlayerOptions([
-  { input: 1, text: 'Fight the lich', action: (game) => game._player.fight(lich) },
+  {
+    input: 1,
+    text: 'Fight the lich',
+    action: (game) => {
+      game._player.fight(game, game._currentRoom._enemies[0]);
+      game._currentRoom.removePlayerOptions('Fight the lich');
+    }
+  },
   { input: 2, text: 'Move north to the King\'s Treasury', action: (game) => game.moveToRoom('north') },
   { input: 3, text: 'Move south to the Mage Quarters', action: (game) => game.moveToRoom('south') }
 ]);

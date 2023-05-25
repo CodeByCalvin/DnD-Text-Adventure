@@ -19,6 +19,7 @@ export class Game {
   setResponse(response) {
     const gameResponseText = document.getElementById('gameresponse');
     gameResponseText.innerHTML = response;
+    gameResponseText.style.color = "red"
 
     // Set the colour to white (so the space remains)
     setTimeout(() => {
@@ -136,8 +137,8 @@ export class Character {
   }
 
   fight(game, enemy) {
-    console.log(`You attacked ${enemy._name} and defeated them.`)
-    game.setResponse(`You attacked ${enemy._name} and defeated them.`);
+    console.log(`You attacked ${enemy._name} and defeated it.`)
+    game.setResponse(`You attacked ${enemy._name} and defeated it.`);
   }
 }
 
