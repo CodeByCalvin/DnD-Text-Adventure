@@ -16,19 +16,41 @@ let game = new Game(player, allRooms);
 console.log(player);
 console.log(game);
 
+// function animateTyping(text, element) {
+//   element.textContent = '';
+
+//   const delay = 70; // Adjust the typing speed by changing this value
+//   let i = 0;
+
+//   function typeNextCharacter() {
+//     if (i < text.length) {
+//       element.textContent += text.charAt(i);
+//       i++;
+//       setTimeout(typeNextCharacter, delay);
+//     }
+//   }
+
+//   typeNextCharacter();
+// }
+
 function updateUI() {
   function displayRoom() {
     let roomName = game.currentRoom.returnName();
     let roomDescription = game.currentRoom.returnDescription();
-    let roomItems = game.currentRoom.returnItems().join(', ');
+    let roomItems = game.currentRoom.returnItems();
     let roomEnemy = game.currentRoom.returnEnemy();
 
-    // Check if there is an enemy in the room
-    let enemyText = `There is ${roomEnemy}.`
 
-    displayText.innerHTML = `You are in the ${roomName}. ${roomDescription}. You see ${roomItems}. ${enemyText}`;
+    setTimeout(() => {
+      displayText.innerHTML = `You are in the ${roomName}. ${roomDescription}. You see ${roomItems}. There is ${roomEnemy.description}.`;
+    }, 200)
+
   }
+
   displayRoom();
+
+
+
   function displayOptions() {
     // Clear old options
     option1.innerHTML = "";
@@ -40,12 +62,14 @@ function updateUI() {
     let roomOptions = game.currentRoom.returnOptions();
 
     // Set new options
-    if (roomOptions[0]) option1.innerHTML = "1.) " + roomOptions[0].text;
-    if (roomOptions[1]) option2.innerHTML = "2.) " + roomOptions[1].text;
-    if (roomOptions[2]) option3.innerHTML = "3.) " + roomOptions[2].text;
-    if (roomOptions[3]) option4.innerHTML = "4.) " + roomOptions[3].text;
+    if (roomOptions[0]) option1.innerHTML = "1. " + roomOptions[0].text;
+    if (roomOptions[1]) option2.innerHTML = "2. " + roomOptions[1].text;
+    if (roomOptions[2]) option3.innerHTML = "3. " + roomOptions[2].text;
+    if (roomOptions[3]) option4.innerHTML = "4. " + roomOptions[3].text;
+
   }
   displayOptions();
+
 }
 
 updateUI();
@@ -69,11 +93,12 @@ function userInput() {
       let selectedOption = roomOptions.find(option => option.input === userInput);
 
       // Check if the selected option exists.
-      if (selectedOption) {
+      if (selectedOption && !selectedOption.text.includes("<s>")) {
         // Execute the selected option's action and pass the game object.
         selectedOption.action(game);
 
         // Update the UI after performing the action.
+
         updateUI();
       } else {
         console.error("Invalid input. Please enter a valid option number.");
@@ -85,3 +110,5 @@ function userInput() {
 userInput();
 
 console.log(game._currentRoom)
+console.log(game._player);
+console.log(game._player._inventory);

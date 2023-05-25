@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: monospace;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#gamearea {
+ border: black 1px solid;
+ padding: 2.4rem;
+
+}
+
+
+.options-container {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.option-title {
+  font-weight: 600;
+}
+
+.game-response {
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+.user-input {
+  border: black 1px solid;
+}
+
+input:focus {
+  outline: none;
+  border-color: black; 
+  box-shadow: 0 0 1px black; 
+}
+
+

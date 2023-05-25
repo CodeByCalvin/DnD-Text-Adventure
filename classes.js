@@ -1,4 +1,4 @@
-//////////////////////// GAME OBJECT ////////////////////////
+//////////////////////// GAME CLASS ////////////////////////
 export class Game {
   constructor(player, rooms, startingRoomIndex = 0) {
     this._player = player;
@@ -16,6 +16,18 @@ export class Game {
     }
   }
 
+  setResponse(response) {
+    const gameResponseText = document.getElementById('gameresponse');
+    gameResponseText.innerHTML = response;
+    gameResponseText.style.color = "red"
+
+    // Set the colour to white (so the space remains)
+    setTimeout(() => {
+      gameResponseText.style.color = "white";
+    }, 1500);
+  }
+
+
 
   // Get current room
   get currentRoom() {
@@ -23,7 +35,7 @@ export class Game {
   }
 }
 
-//////////////////////// ROOM OBJECT ////////////////////////
+//////////////////////// ROOM CLASS ////////////////////////
 export class Room {
   constructor(name, description) {
     this._name = name;
@@ -53,12 +65,20 @@ export class Room {
 
   // Add enemy to room
   addEnemy(enemy) {
-    this._enemies.push(enemy)
+    this._enemies.push(enemy);
   }
 
   // Add player options
   addPlayerOptions(options) {
     this._options = options;
+  }
+
+  removePlayerOptions(option) {
+    this._options.forEach(item => {
+      if (item.text === option) {
+        item.text = `<s>${item.text}</s>`;
+      }
+    });
   }
 
   // Return options in the room
@@ -78,20 +98,31 @@ export class Room {
 
   // Return items in the room
   returnItems() {
-    return this._items.map(item => item.name);
+    if (this._items.length > 0) {
+      return this._items.map(item => item.name);
+    } else {
+      return 'no items in this room';
+    }
   }
 
   // Return enemy in the room
   returnEnemy() {
     if (this._enemies.length > 0) {
-      return this._enemies[0]._name;
+      return {
+        name: this._enemies[0].name,
+        description: this._enemies[0].description
+      };
     } else {
-      return 'no enemy';
+      return {
+        name: 'no enemy',
+        description: 'There is no enemy in this room.'
+      };
     }
   }
+
 }
 
-//////////////////////// CHARACTER OBJECT ////////////////////////
+//////////////////////// CHARACTER CLASS ////////////////////////
 export class Character {
   constructor(name, health, inventory) {
     this._name = name;
@@ -103,22 +134,41 @@ export class Character {
     this._health -= amount;
   }
 
-  addItem(item) {
+  addItem(game, item) {
     this._inventory.push(item);
+    console.log(this._inventory)
+    game.setResponse(`You picked up ${item.name}.`)
+  }
+
+  fight(game, enemy) {
+    console.log(`You attacked ${enemy._name} and defeated it.`)
+    game.setResponse(`You attacked ${enemy._name} and defeated it.`);
   }
 }
 
-//////////////////////// ENEMY OBJECT ////////////////////////
+//////////////////////// ENEMY CLASS ////////////////////////
 export class Enemy {
-  constructor(name, health, damage, dialogue) {
+  constructor(name, description, dialogue) {
     this._name = name;
-    this._health = health;
-    this._damage = damage;
+    this._description = description;
     this._dialogue = dialogue;
   }
+
+  // add getters if needed
+  get name() {
+    return this._name;
+  }
+
+  get description() {
+    return this._description;
+  }
+
+  get dialogue() {
+    return this._dialogue;
+  }
 }
 
-//////////////////////// ITEM OBJECT ////////////////////////
+//////////////////////// ITEM CLASS ////////////////////////
 
 export class Item {
   constructor(name) {
