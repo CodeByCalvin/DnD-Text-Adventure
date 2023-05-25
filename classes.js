@@ -24,7 +24,7 @@ export class Game {
     // Set the colour to white (so the space remains)
     setTimeout(() => {
       gameResponseText.style.color = "white";
-    }, 3000);
+    }, 2000);
   }
 
 
@@ -98,7 +98,11 @@ export class Room {
 
   // Return items in the room
   returnItems() {
-    return this._items.map(item => item.name);
+    if (this._items.length > 0) {
+      return this._items.map(item => item.name);
+    } else {
+      return 'no items in this room';
+    }
   }
 
   // Return enemy in the room

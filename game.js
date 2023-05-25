@@ -20,7 +20,7 @@ function updateUI() {
   function displayRoom() {
     let roomName = game.currentRoom.returnName();
     let roomDescription = game.currentRoom.returnDescription();
-    let roomItems = game.currentRoom.returnItems().join(', ');
+    let roomItems = game.currentRoom.returnItems();
     let roomEnemy = game.currentRoom.returnEnemy();
 
     // Check if there is an enemy in the room

@@ -22,23 +22,22 @@ const shield = new Item('a protective bronze shield');
 const goldCoins = new Item('a bag of 1000 gold coins');
 
 //////////////////////// ROOMS ////////////////////////
-const theFoyerOfAscendancy = new Room("The Foyer of Ascendancy", `There is a staircase to the north that leads up to the main area of the castle.`);
+const theFoyerOfAscendancy = new Room("The Foyer of Ascendancy", `There is a staircase to the north that leads up to the main area of the castle`);
 theFoyerOfAscendancy.addEnemy(ghost);
 theFoyerOfAscendancy.addItem(sword)
 theFoyerOfAscendancy.addPlayerOptions([
   {
     input: 1, text: 'Take the sword', action: (game) => {
       game._player.addItem(game, sword)
-      theFoyerOfAscendancy.removePlayerOptions('Take the sword')
+      game._currentRoom.removePlayerOptions('Take the sword')
     }
   },
   { input: 2, text: 'Move up the stairs', action: (game) => game.moveToRoom('north') },
 ]);
 
 //// The Grand Hall
-const theGrandHall = new Room("The Grand Hall", "There is a large table in the center of the room, with a few chairs scattered around it. There is a door to the north, and a door to the east.");
+const theGrandHall = new Room("The Grand Hall", "There is a large table in the center of the room, with a few chairs scattered around it. There is a door to the north, and a door to the east");
 theGrandHall.addEnemy(mummy);
-console.log(theGrandHall._enemies);
 theGrandHall.addPlayerOptions([
   {
     input: 1,
