@@ -53,7 +53,7 @@ theGrandHall.addPlayerOptions([
 
 
 ///// The Archive of Ages
-const theArchiveOfAges = new Room("The Archive of Ages", "There are bookshelves lining the walls, and a few tables decorated with dusty tomes.");
+const theArchiveOfAges = new Room("The Archive of Ages", "There are bookshelves lining the walls, and a few tables decorated with dusty tomes");
 theArchiveOfAges.addEnemy(animatedBook);
 theArchiveOfAges.addItem(luckyCoin);
 theArchiveOfAges.addPlayerOptions([
@@ -76,7 +76,7 @@ theArchiveOfAges.addPlayerOptions([
 ]);
 
 ///// The Elixir Enclave
-const theElixirEnclave = new Room("The Elixir Enclave", "There are vials of various liquids scattered around the room, and a few tables with beakers and other alchemical equipment.");
+const theElixirEnclave = new Room("The Elixir Enclave", "There are vials of various liquids scattered around the room, and a few tables with beakers and other alchemical equipment");
 theElixirEnclave.addEnemy(undeadScientist);
 theElixirEnclave.addItem(healingPotion);
 theElixirEnclave.addPlayerOptions([
@@ -99,7 +99,7 @@ theElixirEnclave.addPlayerOptions([
 ]);
 
 ///// The Mage Quarters
-const theMageQuarters = new Room("The Mage Quarters", "There are a few beds, and a desk with a few books on it.");
+const theMageQuarters = new Room("The Mage Quarters", "There are a few beds, and a desk with a few books on it");
 theMageQuarters.addEnemy(ghoul);
 theMageQuarters.addPlayerOptions([
   {
@@ -117,7 +117,7 @@ theMageQuarters.addPlayerOptions([
 ]);
 
 ///// The Battle Yard
-const theBattleYard = new Room("The Battle Yard", "There are a few training dummies, and a few weapons scattered around the room.");
+const theBattleYard = new Room("The Battle Yard", "There are a few training dummies, and a few weapons scattered around the room");
 theBattleYard.addEnemy(skeleton);
 theBattleYard.addItem(bandages);
 theBattleYard.addPlayerOptions([
@@ -140,7 +140,7 @@ theBattleYard.addPlayerOptions([
 ]);
 
 ///// The Royal Armory
-const theRoyalArmory = new Room("The Royal Armory", "There are a few racks of weapons, and a few suits of armor scattered around the room.");
+const theRoyalArmory = new Room("The Royal Armory", "There are a few racks of weapons, and a few suits of armor scattered around the room");
 theRoyalArmory.addEnemy(animatedArmor);
 theRoyalArmory.addItem(shield);
 theRoyalArmory.addPlayerOptions([
@@ -163,7 +163,7 @@ theRoyalArmory.addPlayerOptions([
 ]);
 
 ///// The Sovereign's Seat
-const theSovereignsSeat = new Room("The Sovereign's Seat", "There is a large throne in the center of the room, with a few chairs scattered around it.");
+const theSovereignsSeat = new Room("The Sovereign's Seat", "There is a large throne in the center of the room, with a few chairs scattered around it");
 theSovereignsSeat.addEnemy(lich);
 theSovereignsSeat.addPlayerOptions([
   {
@@ -179,7 +179,7 @@ theSovereignsSeat.addPlayerOptions([
 ]);
 
 ///// The King's Treasury
-const theKingsTreasury = new Room("The King's Treasury", "There are a few empty chests scattered around the room and something glittering in the corner...");
+const theKingsTreasury = new Room("The King's Treasury", "There are a few empty chests scattered around the room and something glittering in the corner..");
 theKingsTreasury.addItem(goldCoins);
 theKingsTreasury.addPlayerOptions([
   {

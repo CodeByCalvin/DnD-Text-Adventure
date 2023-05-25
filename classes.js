@@ -1,4 +1,4 @@
-//////////////////////// GAME OBJECT ////////////////////////
+//////////////////////// GAME CLASS ////////////////////////
 export class Game {
   constructor(player, rooms, startingRoomIndex = 0) {
     this._player = player;
@@ -24,7 +24,7 @@ export class Game {
     // Set the colour to white (so the space remains)
     setTimeout(() => {
       gameResponseText.style.color = "white";
-    }, 2000);
+    }, 1500);
   }
 
 
@@ -35,7 +35,7 @@ export class Game {
   }
 }
 
-//////////////////////// ROOM OBJECT ////////////////////////
+//////////////////////// ROOM CLASS ////////////////////////
 export class Room {
   constructor(name, description) {
     this._name = name;
@@ -122,7 +122,7 @@ export class Room {
 
 }
 
-//////////////////////// CHARACTER OBJECT ////////////////////////
+//////////////////////// CHARACTER CLASS ////////////////////////
 export class Character {
   constructor(name, health, inventory) {
     this._name = name;
@@ -146,7 +146,7 @@ export class Character {
   }
 }
 
-//////////////////////// ENEMY OBJECT ////////////////////////
+//////////////////////// ENEMY CLASS ////////////////////////
 export class Enemy {
   constructor(name, description, dialogue) {
     this._name = name;
@@ -168,7 +168,7 @@ export class Enemy {
   }
 }
 
-//////////////////////// ITEM OBJECT ////////////////////////
+//////////////////////// ITEM CLASS ////////////////////////
 
 export class Item {
   constructor(name) {
