@@ -13,7 +13,7 @@ const lich = new Enemy('a lich', 'a lich sitting on the throne, scratching at th
 
 
 //////////////////////// ITEMS ////////////////////////
-const sword = new Item('a glimmering, freshly-sharpened sword on the ground');
+const sword = new Item('a freshly-sharpened sword');
 const luckyCoin = new Item('a lucky coin');
 const healingPotion = new Item('a healing potion');
 const malazBook = new Item("a book titled 'The Origin of Malaz Island'");
@@ -22,23 +22,37 @@ const shield = new Item('a protective bronze shield');
 const goldCoins = new Item('a bag of 1000 gold coins');
 
 //////////////////////// ROOMS ////////////////////////
-const theFoyerOfAscendancy = new Room("The Foyer of Ascendancy", "There is a staircase to the north that leads up to the main area of the castle");
+const theFoyerOfAscendancy = new Room("The Foyer of Ascendancy", `There is a staircase to the north that leads up to the main area of the castle.`);
 theFoyerOfAscendancy.addEnemy(ghost);
 theFoyerOfAscendancy.addItem(sword)
 theFoyerOfAscendancy.addPlayerOptions([
-  { input: 1, text: 'Take the sword', action: (game) => game._player.addItem(sword) },
+  {
+    input: 1, text: 'Take the sword', action: (game) => {
+      game._player.addItem(game, sword)
+      theFoyerOfAscendancy.removePlayerOptions('Take the sword')
+    }
+  },
   { input: 2, text: 'Move up the stairs', action: (game) => game.moveToRoom('north') },
 ]);
 
 //// The Grand Hall
 const theGrandHall = new Room("The Grand Hall", "There is a large table in the center of the room, with a few chairs scattered around it. There is a door to the north, and a door to the east.");
 theGrandHall.addEnemy(mummy);
+console.log(theGrandHall._enemies);
 theGrandHall.addPlayerOptions([
-  { input: 1, text: 'Fight the mummy', action: (game) => game._player.fight(mummy) },
+  {
+    input: 1,
+    text: 'Fight the mummy',
+    action: (game) => {
+      game._player.fight(game, game._currentRoom._enemies[0]);
+      theGrandHall.removePlayerOptions('Fight the mummy');
+    }
+  },
   { input: 2, text: 'Move east to the Battle Yard', action: (game) => game.moveToRoom('east') },
   { input: 3, text: 'Move west to the Archive of Ages', action: (game) => game.moveToRoom('west') },
   { input: 4, text: 'Move back down the stairs to the Foyer of Ascendancy', action: (game) => game.moveToRoom('south') },
 ]);
+
 
 ///// The Archive of Ages
 const theArchiveOfAges = new Room("The Archive of Ages", "There are bookshelves lining the walls, and a few tables decorated with dusty tomes.");

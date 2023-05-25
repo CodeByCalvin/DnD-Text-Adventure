@@ -16,6 +16,17 @@ export class Game {
     }
   }
 
+  setResponse(response) {
+    const gameResponseText = document.getElementById('gameresponse');
+    gameResponseText.innerHTML = response;
+
+    // Set the colour to white (so the space remains)
+    setTimeout(() => {
+      gameResponseText.style.color = "white";
+    }, 3000);
+  }
+
+
 
   // Get current room
   get currentRoom() {
@@ -52,17 +63,21 @@ export class Room {
   }
 
   // Add enemy to room
-  addEnemy(enemyName, enemyDescription, enemyDialogue) {
-    this._enemies.push({
-      name: enemyName,
-      description: enemyDescription,
-      dialogue: enemyDialogue
-    });
+  addEnemy(enemy) {
+    this._enemies.push(enemy);
   }
 
   // Add player options
   addPlayerOptions(options) {
     this._options = options;
+  }
+
+  removePlayerOptions(option) {
+    this._options.forEach(item => {
+      if (item.text === option) {
+        item.text = `<s>${item.text}</s>`;
+      }
+    });
   }
 
   // Return options in the room
@@ -88,11 +103,18 @@ export class Room {
   // Return enemy in the room
   returnEnemy() {
     if (this._enemies.length > 0) {
-      return this._enemies[0]._name;
+      return {
+        name: this._enemies[0].name,
+        description: this._enemies[0].description
+      };
     } else {
-      return 'no enemy';
+      return {
+        name: 'no enemy',
+        description: 'There is no enemy in this room.'
+      };
     }
   }
+
 }
 
 //////////////////////// CHARACTER OBJECT ////////////////////////
@@ -107,24 +129,37 @@ export class Character {
     this._health -= amount;
   }
 
-  addItem(item) {
+  addItem(game, item) {
     this._inventory.push(item);
     console.log(this._inventory)
-    return `You picked up ${item.name}.`
+    game.setResponse(`You picked up ${item.name}.`)
   }
-  fight(enemy) {
+
+  fight(game, enemy) {
     console.log(`You attacked ${enemy._name} and defeated them.`)
-    return `You attacked ${enemy._name} and deafeted them.`
+    game.setResponse(`You attacked ${enemy._name} and defeated them.`);
   }
 }
 
 //////////////////////// ENEMY OBJECT ////////////////////////
 export class Enemy {
-  constructor(name, health, damage, dialogue) {
+  constructor(name, description, dialogue) {
     this._name = name;
-    this._health = health;
-    this._damage = damage;
+    this._description = description;
     this._dialogue = dialogue;
+  }
+
+  // add getters if needed
+  get name() {
+    return this._name;
+  }
+
+  get description() {
+    return this._description;
+  }
+
+  get dialogue() {
+    return this._dialogue;
   }
 }
 

@@ -24,9 +24,8 @@ function updateUI() {
     let roomEnemy = game.currentRoom.returnEnemy();
 
     // Check if there is an enemy in the room
-    let enemyText = `There is ${roomEnemy}.`
 
-    displayText.innerHTML = `You are in the ${roomName}. ${roomDescription}. You see ${roomItems}. ${enemyText}`;
+    displayText.innerHTML = `You are in the ${roomName}. ${roomDescription}. You see ${roomItems}. There is ${roomEnemy.description}.`;
   }
   displayRoom();
   function displayOptions() {
@@ -69,7 +68,7 @@ function userInput() {
       let selectedOption = roomOptions.find(option => option.input === userInput);
 
       // Check if the selected option exists.
-      if (selectedOption) {
+      if (selectedOption && !selectedOption.text.includes("<s>")) {
         // Execute the selected option's action and pass the game object.
         selectedOption.action(game);
 
@@ -87,3 +86,8 @@ userInput();
 console.log(game._currentRoom)
 console.log(game._player);
 console.log(game._player._inventory);
+
+function displayGameResponse() {
+  let gameResponse = game._response;
+  displayText.innerHTML = gameResponse;
+}
