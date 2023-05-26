@@ -2,6 +2,8 @@
 
 <strong>Welcome to the D&D Text Adventure's Github repository! This is an interactive text-based game inspired by the world of Dungeons and Dragons. Here, you can find my codebase, including any updates and new features.</strong>
 
+![Screenshot of the first room of the D&D Text Adventure Game](https://i.imgur.com/dcLyXap.png)
+
 ## Features
 
 - **Single Page Layout**: The quiz is designed to run on a single HTML page for a seamless user experience.
