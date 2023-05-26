@@ -19,7 +19,7 @@ function updateUI() {
     let roomItems = game.currentRoom.returnItems();
     let roomEnemy = game.currentRoom.returnEnemy();
 
-    displayText.innerHTML = `You are in the ${roomName}. ${roomDescription}. You see ${roomItems}. There is ${roomEnemy.description}.`;
+    displayText.innerHTML = `You are in ${roomName}. ${roomDescription}. You see ${roomItems}. There is ${roomEnemy.description}.`;
 
   }
   displayRoom();
