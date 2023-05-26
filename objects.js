@@ -29,6 +29,7 @@ theFoyerOfAscendancy.addPlayerOptions([
     input: 1, text: 'Take the sword', action: (game) => {
       game._player.addItem(game, sword)
       game._currentRoom.removePlayerOptions('Take the sword')
+
     }
   },
   { input: 2, text: 'Move up the stairs', action: (game) => game.moveToRoom('north') },
@@ -186,6 +187,9 @@ theKingsTreasury.addPlayerOptions([
     input: 1, text: 'Take the big bag of gold coins', action: (game) => {
       game._player.addItem(game, goldCoins)
       game._currentRoom.removePlayerOptions('Take the big bag of gold coins')
+      setTimeout(() => {
+        game._player.winGame();
+      }, 2000);
     }
   },
   { input: 2, text: 'Move west to the Mage Quarters', action: (game) => game.moveToRoom('west') },
@@ -205,3 +209,4 @@ theSovereignsSeat.linkRoom(theKingsTreasury, null, theMageQuarters, null);
 theKingsTreasury.linkRoom(null, null, null, theMageQuarters);
 
 const allRooms = [theFoyerOfAscendancy, theGrandHall, theArchiveOfAges, theElixirEnclave, theMageQuarters, theBattleYard, theRoyalArmory, theSovereignsSeat, theKingsTreasury];
+

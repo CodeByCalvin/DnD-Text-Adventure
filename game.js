@@ -45,6 +45,7 @@ function updateUI() {
   displayOptions();
 
 }
+
 updateUI();
 
 // Handles the user input and runs the selected option (1, 2, 3, 4)
@@ -83,4 +84,5 @@ function userInput() {
 }
 
 userInput();
+
 
