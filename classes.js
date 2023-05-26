@@ -24,7 +24,7 @@ export class Game {
     // Set the colour to white (so the space remains)
     setTimeout(() => {
       gameResponseText.style.color = "white";
-    }, 1500);
+    }, 1000);
   }
 
 

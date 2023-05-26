@@ -2,6 +2,7 @@ import { Game, Character } from './classes.js';
 import { allRooms } from './objects.js';
 
 const displayText = document.getElementById("displaytext");
+const gameResponseText = document.getElementById('gameresponse');
 const userText = document.getElementById("userInput");
 const options = document.getElementById("options");
 const option1 = document.getElementById("option1");
@@ -52,6 +53,7 @@ function updateUI() {
 
 
   function displayOptions() {
+
     // Clear old options
     option1.innerHTML = "";
     option2.innerHTML = "";
