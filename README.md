@@ -6,8 +6,9 @@
 
 - **Single Page Layout**: The quiz is designed to run on a single HTML page for a seamless user experience.
 - **Question Navigation**: The game state changes as you progress, allowing you to move forward with your choices.
+- **Player progress**: When an option is selected, it is crossed out to help the user keep track of their progress.
 - **Item interaction**: Pick up a sword, shield or a healing potion and add it to your inventory.
-- **Game won screen**: Once you have retrieved the bag of gold coins, congratulations, you've won the game!
+- **Game win screen**: Once you have retrieved the bag of gold coins, congratulations, you've won the game!
 
 ## Technologies Used
 
