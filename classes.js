@@ -43,6 +43,9 @@ export class Room {
     this._options = []
   }
 
+  enter() {
+
+  }
   // Link rooms together
   linkRoom(roomNorth, roomEast, roomSouth, roomWest) {
     this._roomNorth = roomNorth;
@@ -124,9 +127,6 @@ export class Character {
     this._inventory = inventory;
   }
 
-  takeDamage(amount) {
-    this._health -= amount;
-  }
 
   addItem(game, item) {
     this._inventory.push(item);
@@ -137,6 +137,25 @@ export class Character {
   fight(game, enemy) {
     console.log(`You attacked ${enemy._name} and defeated it.`)
     game.setResponse(`You attacked ${enemy._name} and defeated it.`);
+  }
+
+  winGame() {
+    const displayText = document.getElementById("displaytext");
+    const optionTitle = document.getElementById("options");
+    const option1 = document.getElementById("option1");
+    const option2 = document.getElementById("option2");
+    const option3 = document.getElementById("option3");
+    const option4 = document.getElementById("option4");
+
+    // Clear the options
+    optionTitle.innerHTML = "";
+    option1.innerHTML = "";
+    option2.innerHTML = "";
+    option3.innerHTML = "";
+    option4.innerHTML = "";
+
+    // Display the win message
+    displayText.innerHTML = "You retrieved the treasure! You win!";
   }
 }
 
