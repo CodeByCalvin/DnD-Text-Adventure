@@ -7,6 +7,7 @@
 - **Single Page Layout**: The quiz is designed to run on a single HTML page for a seamless user experience.
 - **Question Navigation**: The game state changes as you progress, allowing you to move forward with your choices.
 - **Item interaction**: Pick up a sword, shield or a healing potion and add it to your inventory.
+- **Game won screen**: Once you have retrieved the bag of gold coins, congratulations, you've won the game!
 
 ## Technologies Used
 
@@ -18,7 +19,6 @@ This project has been created using:
 
 ## Upcoming features
 - Animated text 
-- A final win condition once you have retrieved the lich's treasure
 
 ## Contribution
 
