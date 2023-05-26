@@ -27,8 +27,6 @@ export class Game {
     }, 1000);
   }
 
-
-
   // Get current room
   get currentRoom() {
     return this._currentRoom;
@@ -44,11 +42,6 @@ export class Room {
     this._enemies = [];
     this._options = []
   }
-
-  enter() {
-    // display the room's description, items, and enemies
-  }
-
 
   // Link rooms together
   linkRoom(roomNorth, roomEast, roomSouth, roomWest) {
@@ -73,6 +66,7 @@ export class Room {
     this._options = options;
   }
 
+  // Remove player option (when used)
   removePlayerOptions(option) {
     this._options.forEach(item => {
       if (item.text === option) {
@@ -154,7 +148,6 @@ export class Enemy {
     this._dialogue = dialogue;
   }
 
-  // add getters if needed
   get name() {
     return this._name;
   }
@@ -169,7 +162,6 @@ export class Enemy {
 }
 
 //////////////////////// ITEM CLASS ////////////////////////
-
 export class Item {
   constructor(name) {
     this.name = name;
