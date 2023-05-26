@@ -6,6 +6,7 @@
 
 - **Single Page Layout**: The quiz is designed to run on a single HTML page for a seamless user experience.
 - **Question Navigation**: The game state changes as you progress, allowing you to move forward with your choices.
+- **Item interaction**: Pick up a sword, shield or a healing potion and add it to your inventory.
 
 ## Technologies Used
 
